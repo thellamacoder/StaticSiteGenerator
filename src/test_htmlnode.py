@@ -24,9 +24,19 @@ class TestHTMLNode(unittest.TestCase):
          self.assertEqual(node.props, None)
 
 class TestLeafNode(unittest.TestCase):
-     def test_leaf_to_html_p(self):
-          node = LeafNode("p", "Hello, world!", None)
-          self.assertEqual(node.to_html(), "<p>Hello, world!</p>")
+    def test_leaf_to_html_p(self):
+        node = LeafNode("p", "Hello, world!", None)
+        self.assertEqual(node.to_html(), "<p>Hello, world!</p>")
+
+    def test_leaf_to_html_a(self):
+        node = LeafNode("a", "Click here")
+        self.assertEqual(node.to_html(), "<a>Click here</a>")
+
+    def test_leaf_to_html_a_link(self):
+        node = LeafNode("a", "Click here", {"href": "www.google.com"})
+        self.assertEqual(node.to_html(), '<a href="www.google.com">Click here</a>')
+
+
 
 if __name__ == "__main__":
 	unittest.main()
