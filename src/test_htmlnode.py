@@ -11,7 +11,6 @@ class TestHTMLNode(unittest.TestCase):
         node = HTMLNode("a", "Hello World!", None, {"href": "https://www.google.com"},)
         self.assertEqual(node.__repr__(), "HTMLNode(Tag: a, Value: Hello World!, Children: None, Props: {'href': 'https://www.google.com'})")
 
-
     def test_values(self):
          node = HTMLNode("div", "I'm happy!")
 
