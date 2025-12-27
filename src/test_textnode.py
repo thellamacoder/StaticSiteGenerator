@@ -28,6 +28,29 @@ class TestTextNodeToHTMLNode(unittest.TestCase):
 		self.assertEqual(html_node.tag, None)
 		self.assertEqual(html_node.value, "This is a text node")
 
+	def test_text_bold(self):
+		node = TextNode("Here is some bold text", TextType.BOLD)
+		html_node = text_node_to_html_node(node)
+		self.assertEqual(html_node.tag, "b")
+		self.assertEqual(html_node.value, "Here is some bold text")
+
+	def test_text_italic(self):
+		node = TextNode("Here is some italic text", TextType.ITALIC)
+		html_node = text_node_to_html_node(node)
+		self.assertEqual(html_node.tag, "i")
+		self.assertEqual(html_node.value, "Here is some italic text")
+
+	def test_text_code(self):
+		node = TextNode("Here is code", TextType.CODE)
+		html_node = text_node_to_html_node(node)
+		self.assertEqual(html_node.tag, "code")
+		self.assertEqual(html_node.value, "Here is code")
+
+	def test_text_link(self):
+		node = TextNode("Link to google", TextType.LINK, "www.google.com")
+		html_node = text_node_to_html_node(node)
+		self.assertEqual(html_node.value, "Link to google")
+
 
 if __name__ == "__main__":
 	unittest.main()
