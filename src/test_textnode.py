@@ -51,6 +51,11 @@ class TestTextNodeToHTMLNode(unittest.TestCase):
 		html_node = text_node_to_html_node(node)
 		self.assertEqual(html_node.value, "Link to google")
 
+	def test_text_image(self):
+		node = TextNode("This is alt text", TextType.IMAGE, "www.google.com")
+		html_node = text_node_to_html_node(node)
+		self.assertEqual(html_node.tag, "img")
+
 
 if __name__ == "__main__":
 	unittest.main()
