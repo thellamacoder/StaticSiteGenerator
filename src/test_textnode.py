@@ -50,11 +50,14 @@ class TestTextNodeToHTMLNode(unittest.TestCase):
 		node = TextNode("Link to google", TextType.LINK, "www.google.com")
 		html_node = text_node_to_html_node(node)
 		self.assertEqual(html_node.value, "Link to google")
+		self.assertEqual(html_node.props, {"href": "www.google.com"})
 
 	def test_text_image(self):
 		node = TextNode("This is alt text", TextType.IMAGE, "www.google.com")
 		html_node = text_node_to_html_node(node)
 		self.assertEqual(html_node.tag, "img")
+		self.assertEqual(html_node.value, "")
+		self.assertEqual(html_node.props, {"src": "www.google.com", "alt": "This is alt text"})
 
 
 if __name__ == "__main__":
