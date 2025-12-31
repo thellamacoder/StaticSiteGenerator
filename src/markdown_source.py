@@ -36,3 +36,19 @@ def extract_markdown_links(text):
     link_text_matches = re.findall(pattern, text)
     
     return link_text_matches
+
+def split_nodes_image(old_nodes):
+    for node in old_nodes:
+        new_nodes = extract_markdown_images([node.text])
+        print(new_nodes)
+        for node in new_nodes:
+            if node.text_type != TextType.IMAGE:
+                return node
+            
+
+def split_nodes_link(old_nodes):
+
+    for node in old_nodes:
+
+        if node.text_type != TextType.LINK:
+            return node
