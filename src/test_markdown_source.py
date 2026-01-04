@@ -55,3 +55,38 @@ class TestMarkdownToTextNodeList(unittest.TestCase):
 			],
 			new_nodes,
 		)
+
+	def test_split_image(self):
+		node = TextNode("This is text with an ![image](https://www.example.com/IMAGE.PNG)", TextType.TEXT,)
+		new_node = split_nodes_image([node])
+		self.assertListEqual([TextNode("This is text with an ", TextType.TEXT), TextNode("image", TextType.IMAGE, "https://www.example.com/IMAGE.PNG"),], new_node,)
+
+	def test_split_link(self):
+		node = TextNode("This is text with a [link](https://boot.dev)", TextType.TEXT,)
+
+		new_node = split_nodes_link([node])
+		self.assertListEqual(
+			[
+				TextNode("This is text with a ", TextType.TEXT,), 
+				TextNode("link", TextType.LINK, "https://boot.dev"), 
+			], 
+			new_node
+		)
+
+	def test_split_lins(self):
+		node = TextNode("This is text with a [link](https://boot.dev) and [another link](https://blog.boot.dev) with text that follows", TextType.TEXT)
+
+		new_nodes = split_nodes_link([node])
+		self.assertListEqual(
+			[
+				TextNode("This is text with a ", TextType.TEXT),
+				TextNode("link", TextType.LINK, "https://boot.dev"),
+				TextNode(" and ", TextType.TEXT),
+				TextNode("another link", TextType.LINK, "https://blog.boot.dev"),
+				TextNode(" with text that follows", TextType.TEXT),
+			],
+			new_nodes
+		)
+
+if __name__ == "__main__":
+	unittest.main()
