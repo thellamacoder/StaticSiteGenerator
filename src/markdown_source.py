@@ -100,3 +100,13 @@ def split_nodes_link(old_nodes):
         if original_text != "":
             new_nodes.append(TextNode(original_text, TextType.TEXT))
     return new_nodes
+
+def text_to_textnode(text):
+
+    original_text = text
+
+    old_node = TextNode(original_text, TextType.TEXT)
+
+    new_nodes = []
+
+    convert_nodes = split_nodes_delimiter([old_node], "*", TextType.BOLD)
