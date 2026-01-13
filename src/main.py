@@ -4,11 +4,18 @@ from markdown_source import *
 def main():
 	
 	print("----")
-	node = "This is **text** with an _italic_ word and a `code block` and an ![obi wan image](https://i.imgur.com/fJRm4Vk.jpeg) and a [link](https://boot.dev)"
+	md = """
+# This is a heading
 
-	new_nodes = text_to_textnode(node)
-	print(new_nodes)
+This is another paragraph with _italic_ text and `code` here
+This is the same paragraph on a new line
+	
+-This is a list
+-with items"""
+	print(markdown_to_blocks(md))
 	print("----")
+
+
 
 
 main()
