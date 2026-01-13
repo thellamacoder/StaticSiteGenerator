@@ -2,7 +2,8 @@ import unittest
 
 from markdown_to_text import markdown_to_blocks
 
-def test_markdown_to_blocks(self):
+class TestMarkdownToHTML(unittest.TestCase):
+	def test_markdown_to_blocks(self):
 		md = """
 This is **bolded** paragraph
 
@@ -13,7 +14,7 @@ This is the same paragraph on a new line
 - with items
 """
 		blocks = markdown_to_blocks(md)
-		self.assertEqual(
+		self.assertListEqual(
             blocks,
             [
                 "This is **bolded** paragraph",

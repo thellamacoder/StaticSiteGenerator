@@ -1,5 +1,5 @@
 def markdown_to_blocks(text):
-    blocks = text.split("/n/n")
+    blocks = text.split("\n\n")
     filtered_blocks = []
     for block in blocks:
         if block == "":
