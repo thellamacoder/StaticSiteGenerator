@@ -44,6 +44,6 @@ def block_to_block_type(block):
         for line in lines:
             if not line.startswith(f"{i}. "):
                 return BlockType.PARAGRAPH
-            
+            i += 1
         return BlockType.ORDERED
     return BlockType.PARAGRAPH
