@@ -141,7 +141,7 @@ this is paragraph text
 
         )
     
-    def test_code(self):
+    def test_codeblock(self):
         md = """
 ```
 This is text that _should_ remain

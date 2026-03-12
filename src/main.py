@@ -1,32 +1,20 @@
-from textnode import TextNode, TextType
-from markdown_source import *
-from markdown_blocks import *
 import os
 import shutil
 
+from copystatic import copy_files_recursive
+
+
+dir_path_static = "./static"
+dir_path_public = "./public"
+
 def main():
- 
-    pass
 
+    if os.path.exists(dir_path_public):
+       shutil.rmtree(dir_path_public)
 
-
-def setup_site():
-    
-    public = os.path.exists("public")
-    if public:
-       print("the public file exists")
-       shutil.rmtree("public/")
-       os.mkdir("public")
-    else:
-        print("that folder does not exist")
-        print(os.listdir())
-    # clear public
-
-    # find contents of source
-
-    # copy contents of source into public
+    print("Copying static files to public directory...")
+    copy_files_recursive(dir_path_static, dir_path_public)
 
     
 
 main()
-setup_site()
