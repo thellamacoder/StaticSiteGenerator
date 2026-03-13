@@ -115,7 +115,7 @@ def ordered_to_html_node(block):
     items = block.split("\n")
     html_items = []
     for item in items:
-        parts = item.split(".", 1)
+        parts = item.split(". ", 1)
         text = parts[1]
         children = text_to_children(text)
         html_items.append(ParentNode("li", children))

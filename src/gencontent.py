@@ -15,8 +15,8 @@ def generate_page(from_path, template_path, dest_path):
     html = node.to_html()
 
     title = extract_title(markdown_content)
-    template = template.replace("{{ Title }}, title")
-    template = template.replace("{{ Content }}, html")
+    template = template.replace("{{ Title }}", title)
+    template = template.replace("{{ Content }}", html)
 
     dest_dir_path = os.path.dirname(dest_path)
     if dest_dir_path != "":
@@ -25,9 +25,9 @@ def generate_page(from_path, template_path, dest_path):
     to_file.write(template)
 
 
-    def extract_title(md):
-        lines = md.split("\n")
-        for line in lines:
-            if line.startswith("# "):
-                return line[2:]
-        raise ValueError("no title found")
+def extract_title(md):
+    lines = md.split("\n")
+    for line in lines:
+        if line.startswith("# "):
+            return line[2:]
+    raise ValueError("no title found")

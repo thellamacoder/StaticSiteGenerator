@@ -106,7 +106,7 @@ This is another paragraph with _italic_ text and `code` here
         print(html)
         self.assertEqual(
             html,
-            "<div><ul><li>This is a list</li><li>with items</li><li>and <i>more</i> items</li></ul><ol><li> This is an <code>ordered</code> list</li><li> with items</li><li> and more items</li></ol></div>",
+            "<div><ul><li>This is a list</li><li>with items</li><li>and <i>more</i>items</li></ul><ol><li>This is an <code>ordered</code> list</li><li>with items</li><li> and more items</li></ol></div>",
         )
 
     def test_headings(self):
