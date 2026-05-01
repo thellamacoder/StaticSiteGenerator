@@ -17,6 +17,7 @@ def main():
 
     print("Copying static files to public directory...")
     copy_files_recursive(dir_path_static, dir_path_public)
+    copy_files_recursive(dir_path_content,dir_path_public)
 
     print("Generating page...")
     generate_page(
